@@ -1,0 +1,156 @@
+@import "../../../styles/design-system.scss";
+@import "../../../styles/mixins.scss";
+
+.card {
+  background-color: $color-bg;
+  border-radius: $radius-md;
+  box-shadow: $shadow-sm;
+  overflow: hidden;
+  transition: all $transition-normal;
+  border: 1px solid $color-border;
+}
+
+.interactive {
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-hover;
+  }
+
+  &:active {
+    transform: translateY(-1px);
+    box-shadow: $shadow-md;
+  }
+}
+
+.padded {
+  padding: $card-padding;
+}
+
+.header {
+  padding: $spacing-md $card-padding;
+  border-bottom: 1px solid $color-border;
+  background-color: $color-surface;
+
+  h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-weight: $font-weight-semibold;
+    font-size: $font-size-md;
+    color: $color-text-primary;
+    letter-spacing: $letter-spacing-tight;
+  }
+}
+
+.footer {
+  padding: $spacing-md $card-padding;
+  border-top: 1px solid $color-border;
+  background-color: $color-surface;
+  
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: $spacing-sm;
+}
+
+.body {
+  padding: $card-padding;
+}
+
+// Card variants
+.default {
+  background-color: $color-bg;
+}
+
+.surface {
+  background-color: $color-surface;
+}
+
+.accent {
+  border-top: 3px solid $color-accent;
+}
+
+.success {
+  border-top: 3px solid $color-success;
+}
+
+.warning {
+  border-top: 3px solid $color-warning;
+}
+
+.error {
+  border-top: 3px solid $color-error;
+}
+
+.info {
+  border-top: 3px solid $color-info;
+}
+
+// Card sizes
+.small {
+  .header, .footer {
+    padding: $spacing-sm $spacing-md;
+  }
+  
+  .body {
+    padding: $spacing-md;
+  }
+}
+
+.large {
+  .header {
+    padding: $spacing-lg $spacing-xl;
+    
+    h2, h3, h4, h5, h6 {
+      font-size: $font-size-lg;
+    }
+  }
+  
+  .footer {
+    padding: $spacing-md $spacing-xl;
+  }
+  
+  .body {
+    padding: $spacing-xl;
+  }
+}
+
+// Card with data
+.dataCard {
+  .value {
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-bold;
+    color: $color-text-primary;
+    margin: $spacing-xs 0 $spacing-sm;
+    line-height: 1.2;
+    letter-spacing: $letter-spacing-tight;
+  }
+  
+  .label {
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+    margin: 0;
+    font-weight: $font-weight-medium;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .trend {
+    display: flex;
+    align-items: center;
+    font-size: $font-size-sm;
+    margin-top: $spacing-xs;
+    
+    &.positive {
+      color: $color-success;
+    }
+    
+    &.negative {
+      color: $color-error;
+    }
+    
+    svg {
+      margin-right: $spacing-xs;
+    }
+  }
+}

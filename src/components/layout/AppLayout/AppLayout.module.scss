@@ -1,0 +1,316 @@
+@import "../../../styles/design-system.scss";
+@import "../../../styles/mixins.scss";
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-md $spacing-lg;
+  background-color: rgba($color-bg, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid $color-border;
+  position: sticky;
+  top: 0;
+  z-index: $z-index-sticky;
+  height: 64px;
+  box-shadow: $shadow-sm;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-weight: $font-weight-semibold;
+  font-size: 1.25rem;
+  color: $color-text-primary;
+  text-decoration: none;
+  letter-spacing: $letter-spacing-tight;
+  width: 170px;
+  transition: color $transition-fast;
+
+  &:hover {
+    text-decoration: none;
+    color: $color-accent-contrast;
+  }
+}
+
+.main {
+  display: flex;
+  flex: 1;
+  position: relative;
+}
+
+.sidebar {
+  width: 240px;
+  background-color: $color-bg;
+  border-right: 1px solid $color-border;
+  padding: $spacing-lg 0;
+  display: none;
+  overflow-y: auto;
+  height: calc(100vh - 64px);
+  position: fixed;
+  top: 64px; /* Height of the header */
+  left: 0;
+  z-index: $z-index-sticky - 1;
+
+  @include breakpoint-up(md) {
+    display: block;
+  }
+}
+
+.sidebarMobile {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 280px;
+  height: 100vh;
+  background-color: $color-bg;
+  border-right: 1px solid $color-border;
+  padding: $spacing-lg 0;
+  z-index: $z-index-modal;
+  transform: translateX(-100%);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: $shadow-lg;
+
+  &.open {
+    transform: translateX(0);
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba($color-text-primary, 0.3);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  z-index: $z-index-modal-backdrop;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+
+  &.open {
+    display: block;
+    opacity: 1;
+  }
+}
+
+.menuButton {
+  display: block;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: $spacing-sm;
+  margin-right: $spacing-sm;
+  color: $color-text-tertiary;
+  transition: color $transition-fast;
+  border-radius: $radius-md;
+
+  &:hover {
+    color: $color-accent-contrast;
+    background-color: rgba($color-accent, 0.08);
+  }
+
+  @include breakpoint-up(md) {
+    display: none;
+  }
+}
+
+.closeButton {
+  position: absolute;
+  top: $spacing-md;
+  right: $spacing-md;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: $spacing-sm;
+  color: $color-text-tertiary;
+  transition: all $transition-fast;
+  border-radius: $radius-md;
+
+  &:hover {
+    color: $color-accent-contrast;
+    background-color: rgba($color-accent, 0.08);
+  }
+}
+
+.content {
+  flex: 1;
+  padding: $spacing-lg;
+  background-color: $color-surface;
+  overflow-y: auto;
+  min-height: calc(100vh - 64px);
+  margin-left: 0;
+  
+  @include breakpoint-up(md) {
+    margin-left: 240px; /* Width of the sidebar */
+  }
+}
+
+.nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navItem {
+  margin-bottom: 2px;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  padding: $spacing-sm $spacing-lg;
+  color: $color-text-secondary;
+  text-decoration: none;
+  transition: all $transition-fast;
+  border-radius: $radius-md;
+  margin: 0 $spacing-sm;
+  font-weight: $font-weight-medium;
+
+  &:hover {
+    background-color: rgba($color-accent, 0.04);
+    color: $color-text-primary;
+    text-decoration: none;
+  }
+
+  &.active {
+    background-color: rgba($color-accent, 0.12);
+    color: $color-accent-contrast;
+    font-weight: $font-weight-semibold;
+
+    svg {
+      color: $color-accent-contrast !important;
+    }
+  }
+
+  svg {
+    margin-right: $spacing-md;
+    flex-shrink: 0;
+    color: $color-text-tertiary;
+    transition: color $transition-fast;
+  }
+}
+
+.userMenu {
+  position: relative;
+}
+
+.userButton {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: $spacing-sm;
+  color: $color-text-secondary;
+  transition: color $transition-fast;
+  border-radius: $radius-md;
+
+  &:hover {
+    color: $color-accent-contrast;
+    background-color: rgba($color-accent, 0.08);
+  }
+
+  img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: $spacing-sm;
+    box-shadow: $shadow-sm;
+    object-fit: cover;
+  }
+
+  span {
+    display: none;
+    font-weight: $font-weight-medium;
+
+    @include breakpoint-up(md) {
+      display: inline;
+    }
+  }
+}
+
+.userDropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 240px;
+  background-color: $color-bg;
+  border-radius: $radius-md;
+  box-shadow: $shadow-lg;
+  display: none;
+  transform: translateY(-10px);
+  opacity: 0;
+  transition: transform $transition-normal, opacity $transition-normal;
+  overflow: hidden;
+  border: 1px solid $color-border;
+
+  &.open {
+    display: block;
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.userMenuHeader {
+  padding: $spacing-md;
+  border-bottom: 1px solid $color-border;
+  background-color: $color-surface;
+
+  h4 {
+    margin: 0;
+    font-size: 0.875rem;
+    font-weight: $font-weight-semibold;
+    color: $color-text-primary;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.75rem;
+    color: $color-text-secondary;
+  }
+}
+
+.userMenuItems {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    a,
+    button {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      text-align: left;
+      padding: $spacing-sm $spacing-md;
+      background: none;
+      border: none;
+      font-size: 0.875rem;
+      color: $color-text-secondary;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all $transition-fast;
+
+      &:hover {
+        background-color: rgba($color-accent, 0.04);
+        color: $color-accent-contrast;
+      }
+
+      svg {
+        margin-right: $spacing-sm;
+        color: $color-text-tertiary;
+        transition: color $transition-fast;
+      }
+    }
+  }
+}

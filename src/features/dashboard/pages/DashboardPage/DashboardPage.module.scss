@@ -1,0 +1,88 @@
+@import "../../../../styles/design-system.scss";
+@import "../../../../styles/mixins.scss";
+
+.dashboardPage {
+  padding: $spacing-xl 0 $spacing-2xl;
+}
+
+.header {
+  margin-bottom: $spacing-xl;
+
+  h1 {
+    margin-bottom: $spacing-xs;
+    font-weight: $font-weight-semibold;
+    color: $color-text-primary;
+  }
+
+  p {
+    color: $color-text-secondary;
+    font-size: 1.125rem;
+    max-width: 560px;
+  }
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-lg;
+  margin-bottom: $spacing-xl;
+
+  @include breakpoint-up(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include breakpoint-up(md) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.sectionTitle {
+  font-size: 1.25rem;
+  font-weight: $font-weight-semibold;
+  margin-bottom: $spacing-lg;
+  color: $color-text-primary;
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.01em;
+
+  &::after {
+    content: "";
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: $color-accent;
+    margin-left: $spacing-sm;
+    border-radius: $radius-full;
+  }
+}
+
+.chartSection {
+  margin-bottom: $spacing-xl;
+}
+
+.transactionsSection {
+  margin-bottom: $spacing-xl;
+}
+
+.emptyState {
+  background-color: $color-bg;
+  border-radius: $radius-lg;
+  padding: $spacing-xl;
+  text-align: center;
+  margin: $spacing-xl 0;
+  box-shadow: $shadow-md;
+
+  h3 {
+    margin-bottom: $spacing-md;
+    font-weight: $font-weight-semibold;
+    color: $color-text-primary;
+  }
+
+  p {
+    color: $color-text-secondary;
+    margin-bottom: $spacing-lg;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

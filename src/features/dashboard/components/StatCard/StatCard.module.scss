@@ -1,0 +1,85 @@
+@import "../../../../styles/design-system.scss";
+@import "../../../../styles/mixins.scss";
+
+.statCard {
+  @include flex(column, flex-start, stretch);
+  height: 100%;
+  padding: $spacing-xl;
+  background-color: $color-bg;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-sm;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+  }
+}
+
+.label {
+  font-size: 0.875rem;
+  color: $color-text-secondary;
+  margin-bottom: $spacing-xs;
+  font-weight: $font-weight-medium;
+}
+
+.value {
+  font-size: 2rem;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin-bottom: $spacing-md;
+  letter-spacing: -0.01em;
+}
+
+.trend {
+  @include flex(row, flex-start, center);
+  font-size: 0.875rem;
+  font-weight: $font-weight-medium;
+
+  &.positive {
+    color: $color-success;
+  }
+
+  &.negative {
+    color: $color-error;
+  }
+
+  svg {
+    margin-right: $spacing-xs;
+  }
+}
+
+.icon {
+  margin-bottom: $spacing-md;
+  width: 48px;
+  height: 48px;
+  @include flex-center;
+  border-radius: 12px;
+  transition: transform 0.2s ease;
+
+  &.primary {
+    background-color: rgba($color-accent, 0.1);
+    color: $color-success;
+  }
+
+  &.success {
+    background-color: rgba($color-success, 0.1);
+    color: $color-success;
+  }
+
+  &.warning {
+    background-color: rgba($color-warning, 0.1);
+    color: $color-warning;
+  }
+
+  &.danger {
+    background-color: rgba($color-error, 0.1);
+    color: $color-error;
+  }
+
+  .statCard:hover & {
+    transform: scale(1.05);
+  }
+}

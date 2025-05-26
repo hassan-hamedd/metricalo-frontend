@@ -1,0 +1,24 @@
+@import "../../../styles/design-system.scss";
+@import "../../../styles/mixins.scss";
+
+.logo {
+  display: inline-flex;
+  color: $color-text-primary;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $color-accent-contrast;
+  }
+}
+
+.logoWithText {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  
+  span {
+    font-weight: $font-weight-semibold;
+    font-size: 1.25rem;
+    letter-spacing: $letter-spacing-tight;
+  }
+} 

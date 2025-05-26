@@ -1,0 +1,278 @@
+// ========================================
+// METRICALO DESIGN SYSTEM
+// ========================================
+
+// ----------------------------------------
+// COLORS
+// ----------------------------------------
+
+// Base colors
+$color-bg: #ffffff;                   // Pure white background
+$color-surface: #f8f8f6;              // Light warm gray for cards
+$color-surface-alt: #f5f5f2;          // Slightly darker surface variant
+$color-border: #e8e8e6;               // Very soft gray for borders
+$color-divider: #ececea;              // Lighter divider lines
+$color-row-alt: #fafaf8;              // Alternate row background
+
+// Text colors
+$color-text-primary: #1a1a1a;         // Almost-black text
+$color-text-secondary: #4a4a4a;       // Gray for subtitles
+$color-text-tertiary: #767676;        // Lighter gray for less emphasis
+$color-text-inverse: #ffffff;         // White text on dark backgrounds
+
+// Brand colors - updated for better contrast
+$color-accent: #b8ed71;               // Metricalo's signature green
+$color-accent-dark: #a3d863;          // Darker green for hover states
+$color-accent-darker: #8fc554;        // Even darker green for active states
+$color-accent-contrast: #70a036;      // High contrast for text on white
+
+// Status colors - refined for better visibility
+$color-success: #4caf50;              // Success state - stronger green
+$color-success-bg: rgba(76, 175, 80, 0.1);
+$color-error: #e53935;                // Error state - warmer red
+$color-error-bg: rgba(229, 57, 53, 0.1);
+$color-warning: #ff9800;              // Warning state - warmer orange
+$color-warning-bg: rgba(255, 152, 0, 0.1);
+$color-info: #2196f3;                 // Info state - brighter blue
+$color-info-bg: rgba(33, 150, 243, 0.1);
+
+// Background modifiers
+$color-muted-bg: #f5f5f5;             // Muted background
+$color-overlay: rgba(0, 0, 0, 0.5);   // Overlay for modals
+
+// ----------------------------------------
+// TYPOGRAPHY
+// ----------------------------------------
+
+// Font family
+$font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 
+              Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 
+              'Helvetica Neue', sans-serif;
+
+// Font sizes
+$font-size-xs: 0.75rem;      // 12px
+$font-size-sm: 0.875rem;     // 14px
+$font-size-base: 1rem;       // 16px
+$font-size-md: 1.125rem;     // 18px
+$font-size-lg: 1.5rem;       // 24px
+$font-size-xl: 2.25rem;      // 36px - increased for more prominent headings
+$font-size-2xl: 2.75rem;     // 44px - increased for more prominent headings
+$font-size-3xl: 3.25rem;     // 52px - increased for more prominent headings
+
+// Font weights
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// Line heights
+$line-height-tight: 1.15;    // Tighter for headings
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.75;
+
+// Letter spacing
+$letter-spacing-tight: -0.025em;  // Tighter for headings
+$letter-spacing-normal: 0;
+$letter-spacing-wide: 0.02em;
+
+// ----------------------------------------
+// SPACING
+// ----------------------------------------
+
+$spacing-xs: 0.25rem;    // 4px
+$spacing-sm: 0.5rem;     // 8px
+$spacing-md: 1rem;       // 16px
+$spacing-lg: 1.5rem;     // 24px
+$spacing-xl: 2rem;       // 32px
+$spacing-2xl: 3rem;      // 48px
+$spacing-3xl: 4rem;      // 64px
+$spacing-4xl: 6rem;      // 96px - Added for more spacious sections
+
+// ----------------------------------------
+// BORDERS & RADIUS
+// ----------------------------------------
+
+$border-width: 1px;
+$border-style: solid;
+
+$radius-sm: 0.25rem;     // 4px
+$radius-md: 0.5rem;      // 8px
+$radius-lg: 0.75rem;     // 12px - reduced for more subtle corners
+$radius-xl: 1rem;        // 16px - added for larger elements
+$radius-full: 9999px;    // Fully rounded
+
+// ----------------------------------------
+// SHADOWS
+// ----------------------------------------
+
+// More refined, subtle shadows
+$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
+$shadow-md: 0 4px 6px rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.06);
+$shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.04), 0 4px 6px rgba(0, 0, 0, 0.08);
+$shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.05), 0 10px 10px rgba(0, 0, 0, 0.04);
+$shadow-focus: 0 0 0 3px rgba($color-accent, 0.4);
+$shadow-hover: 0 6px 10px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.05);
+
+// ----------------------------------------
+// TRANSITIONS
+// ----------------------------------------
+
+$transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+$transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+$transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+
+// ----------------------------------------
+// Z-INDEX
+// ----------------------------------------
+
+$z-index-dropdown: 1000;
+$z-index-sticky: 1100;
+$z-index-banner: 1200;
+$z-index-fixed: 1300;
+$z-index-modal-backdrop: 1400;
+$z-index-modal: 1500;
+$z-index-popover: 1600;
+$z-index-tooltip: 1700;
+
+// ----------------------------------------
+// BREAKPOINTS
+// ----------------------------------------
+
+$breakpoint-xs: 0;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-2xl: 1400px;
+
+// ----------------------------------------
+// CONTAINER WIDTHS
+// ----------------------------------------
+
+$container-sm: 540px;
+$container-md: 720px;
+$container-lg: 960px;
+$container-xl: 1140px;
+$container-2xl: 1320px;
+
+// ----------------------------------------
+// COMPONENTS
+// ----------------------------------------
+
+// Buttons
+$button-padding-y: 0.75rem;     
+$button-padding-x: 1.5rem;     
+$button-font-weight: $font-weight-semibold; 
+$button-border-radius: $radius-md;
+$button-transition: all $transition-normal;
+
+// Cards
+$card-padding: $spacing-lg;
+$card-border-radius: $radius-md;
+$card-bg-color: $color-bg;
+$card-border-color: $color-border;
+$card-box-shadow: $shadow-sm;
+
+// Forms
+$input-height: 3rem;                   
+$input-padding-y: 0.625rem;
+$input-padding-x: 0.875rem;
+$input-border-width: $border-width;
+$input-border-radius: $radius-md;
+$input-bg-color: $color-bg;
+$input-border-color: $color-border;
+$input-focus-border-color: $color-accent-dark;
+$input-focus-box-shadow: $shadow-focus;
+
+// Tables
+$table-cell-padding-y: $spacing-md;    
+$table-cell-padding-x: $spacing-lg;     
+$table-border-color: $color-border; 
+$table-striped-bg: $color-row-alt;  
+$table-hover-bg: rgba($color-accent, 0.04); 
+
+// ----------------------------------------
+// CSS MODULE EXPORTS
+// ----------------------------------------
+
+:export {
+  // Colors
+  colorBg: $color-bg;
+  colorSurface: $color-surface;
+  colorSurfaceAlt: $color-surface-alt;
+  colorBorder: $color-border;
+  colorDivider: $color-divider;
+  colorRowAlt: $color-row-alt;
+  
+  colorTextPrimary: $color-text-primary;
+  colorTextSecondary: $color-text-secondary;
+  colorTextTertiary: $color-text-tertiary;
+  colorTextInverse: $color-text-inverse;
+  
+  colorAccent: $color-accent;
+  colorAccentDark: $color-accent-dark;
+  colorAccentDarker: $color-accent-darker;
+  colorAccentContrast: $color-accent-contrast;
+  
+  colorSuccess: $color-success;
+  colorSuccessBg: $color-success-bg;
+  colorError: $color-error;
+  colorErrorBg: $color-error-bg;
+  colorWarning: $color-warning;
+  colorWarningBg: $color-warning-bg;
+  colorInfo: $color-info;
+  colorInfoBg: $color-info-bg;
+  
+  colorMutedBg: $color-muted-bg;
+  
+  // Typography
+  fontFamily: $font-family;
+  
+  fontSizeXs: $font-size-xs;
+  fontSizeSm: $font-size-sm;
+  fontSizeBase: $font-size-base;
+  fontSizeMd: $font-size-md;
+  fontSizeLg: $font-size-lg;
+  fontSizeXl: $font-size-xl;
+  fontSize2xl: $font-size-2xl;
+  fontSize3xl: $font-size-3xl;
+  
+  fontWeightRegular: $font-weight-regular;
+  fontWeightMedium: $font-weight-medium;
+  fontWeightSemibold: $font-weight-semibold;
+  fontWeightBold: $font-weight-bold;
+  
+  lineHeightTight: $line-height-tight;
+  lineHeightNormal: $line-height-normal;
+  lineHeightRelaxed: $line-height-relaxed;
+  
+  // Spacing
+  spacingXs: $spacing-xs;
+  spacingSm: $spacing-sm;
+  spacingMd: $spacing-md;
+  spacingLg: $spacing-lg;
+  spacingXl: $spacing-xl;
+  spacing2xl: $spacing-2xl;
+  spacing3xl: $spacing-3xl;
+  spacing4xl: $spacing-4xl;
+  
+  // Borders & Radius
+  radiusSm: $radius-sm;
+  radiusMd: $radius-md;
+  radiusLg: $radius-lg;
+  radiusXl: $radius-xl;
+  radiusFull: $radius-full;
+  
+  // Shadows
+  shadowSm: $shadow-sm;
+  shadowMd: $shadow-md;
+  shadowLg: $shadow-lg;
+  shadowXl: $shadow-xl;
+  shadowFocus: $shadow-focus;
+  shadowHover: $shadow-hover;
+  
+  // Transitions
+  transitionFast: $transition-fast;
+  transitionNormal: $transition-normal;
+  transitionSlow: $transition-slow;
+} 

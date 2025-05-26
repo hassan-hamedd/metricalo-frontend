@@ -1,0 +1,117 @@
+@import "../../../../styles/design-system.scss";
+@import "../../../../styles/mixins.scss";
+
+.loginPage {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-xl 0;
+  background-color: $color-surface;
+  background-image: linear-gradient(
+    135deg,
+    rgba($color-bg, 0.7) 0%,
+    rgba($color-surface, 0.7) 100%
+  );
+}
+
+.loginCard {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.logo {
+  text-align: center;
+  margin-bottom: $spacing-xl;
+
+  h1 {
+    color: $color-text-primary;
+    font-weight: $font-weight-semibold;
+    letter-spacing: -0.02em;
+    font-size: 2.5rem;
+    margin-bottom: $spacing-xs;
+  }
+
+  p {
+    color: $color-text-secondary;
+    font-size: 1.125rem;
+  }
+}
+
+.form {
+  margin-bottom: $spacing-lg;
+}
+
+.formGroup {
+  margin-bottom: $spacing-md;
+}
+
+.label {
+  display: block;
+  margin-bottom: $spacing-xs;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  font-size: 0.9375rem;
+}
+
+.input {
+  width: 100%;
+  padding: $spacing-md;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  transition: all 0.2s ease;
+  font-size: 1rem;
+  box-shadow: 0 1px 2px rgba($color-text-primary, 0.04);
+
+  &:focus {
+    outline: none;
+    border-color: $color-accent;
+    box-shadow: 0 0 0 3px rgba($color-accent, 0.1);
+  }
+}
+
+.submitButton {
+  width: 100%;
+  margin-top: $spacing-lg;
+  height: 48px;
+  font-size: 1rem;
+  font-weight: $font-weight-medium;
+}
+
+.errorMessage {
+  color: $color-error;
+  margin-top: $spacing-sm;
+  font-size: 0.875rem;
+  font-weight: $font-weight-medium;
+  display: flex;
+  align-items: center;
+
+  &::before {
+    content: "!";
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    background-color: $color-error;
+    color: $color-bg;
+    border-radius: 50%;
+    margin-right: $spacing-xs;
+    font-size: 0.75rem;
+    font-weight: $font-weight-bold;
+  }
+}
+
+.forgotPassword {
+  display: block;
+  text-align: center;
+  margin-top: $spacing-md;
+  color: $color-text-secondary;
+  font-size: 0.9375rem;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: $color-accent;
+  }
+}

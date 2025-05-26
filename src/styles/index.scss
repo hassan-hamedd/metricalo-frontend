@@ -1,0 +1,17 @@
+/*
+  Metricalo Billing Dashboard Design System
+  Main entry point for all styles
+*/
+
+@import "reset.scss";
+@import "design-system.scss";
+@import "mixins.scss";
+@import "global.scss";
+
+// Design System Foundation
+@import "./reset.scss";
+@import "./design-system.scss";
+@import "./mixins.scss";
+
+// Global Styles
+@import "./global.scss";

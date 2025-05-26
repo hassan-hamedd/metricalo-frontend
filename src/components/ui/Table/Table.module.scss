@@ -1,0 +1,165 @@
+@import "../../../styles/design-system.scss";
+@import "../../../styles/mixins.scss";
+
+.tableContainer {
+  width: 100%;
+  overflow-x: auto;
+  background-color: $color-bg;
+  border-radius: $radius-md;
+  box-shadow: $shadow-sm;
+  border: 1px solid $color-border;
+
+  @include breakpoint-down(sm) {
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+  }
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: $font-size-sm;
+
+  th, td {
+    text-align: left;
+    padding: $table-cell-padding-y $table-cell-padding-x;
+    vertical-align: middle;
+  }
+
+  th {
+    font-weight: $font-weight-semibold;
+    color: $color-text-secondary;
+    background-color: $color-surface;
+    border-bottom: 2px solid $color-border;
+  }
+
+  td {
+    border-bottom: 1px solid $color-divider;
+    color: $color-text-primary;
+    transition: background-color $transition-fast;
+  }
+
+  tbody tr {
+    transition: background-color $transition-fast;
+
+    &:last-child td {
+      border-bottom: none;
+    }
+
+    &:hover {
+      background-color: $table-hover-bg;
+    }
+  }
+}
+
+.striped {
+  tbody tr:nth-child(even) {
+    background-color: $table-striped-bg;
+
+    &:hover {
+      background-color: $table-hover-bg;
+    }
+  }
+}
+
+.compact {
+  th, td {
+    padding: $spacing-sm $spacing-md;
+  }
+}
+
+.bordered {
+  th, td {
+    border: 1px solid $color-border;
+  }
+}
+
+.cellAlignCenter {
+  text-align: center;
+}
+
+.cellAlignRight {
+  text-align: right;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  
+  &::before {
+    content: '';
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: $spacing-xs;
+  }
+  
+  &.success::before {
+    background-color: $color-success;
+  }
+  
+  &.error::before {
+    background-color: $color-error;
+  }
+  
+  &.warning::before {
+    background-color: $color-warning;
+  }
+  
+  &.info::before {
+    background-color: $color-info;
+  }
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-sm $spacing-md;
+  border-top: 1px solid $color-border;
+  background-color: $color-surface;
+  
+  @include breakpoint-up(md) {
+    padding: $spacing-sm $spacing-lg;
+  }
+}
+
+.paginationInfo {
+  color: $color-text-secondary;
+  font-size: $font-size-sm;
+}
+
+.paginationControls {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+}
+
+.emptyState {
+  padding: $spacing-xl 0;
+  text-align: center;
+  color: $color-text-tertiary;
+  
+  svg {
+    display: block;
+    width: 48px;
+    height: 48px;
+    margin: 0 auto $spacing-md;
+    color: $color-text-tertiary;
+    opacity: 0.5;
+  }
+  
+  h4 {
+    margin: 0 0 $spacing-xs;
+    font-weight: $font-weight-medium;
+    font-size: $font-size-md;
+    color: $color-text-secondary;
+  }
+  
+  p {
+    margin: 0;
+    font-size: $font-size-sm;
+  }
+} 
