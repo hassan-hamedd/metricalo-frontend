@@ -1,6 +1,7 @@
 import type { Transaction } from "../../../../types/dashboard";
 import { formatDate, formatCurrency } from "../../../../utils/formatters";
 import styles from "./TransactionList.module.scss";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 export interface TransactionListProps {
   transactions: Transaction[];
@@ -30,10 +31,13 @@ export const TransactionList = ({
     pageButtons.push(
       <button
         key="prev"
+        className={styles.navButton}
         onClick={() => onPageChange?.(page - 1)}
         disabled={page === 1 || isLoading}
+        aria-label="Previous page"
       >
-        Prev
+        <FiChevronLeft />
+        <span>Prev</span>
       </button>
     );
 
@@ -58,10 +62,13 @@ export const TransactionList = ({
     pageButtons.push(
       <button
         key="next"
+        className={styles.navButton}
         onClick={() => onPageChange?.(page + 1)}
         disabled={page === totalPages || isLoading}
+        aria-label="Next page"
       >
-        Next
+        <span>Next</span>
+        <FiChevronRight />
       </button>
     );
 

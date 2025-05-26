@@ -128,4 +128,23 @@
       border-color: $color-accent;
     }
   }
+  
+  .navButton {
+    min-width: 80px;
+    padding: 0 $spacing-sm;
+    gap: $spacing-xs;
+    background-color: rgba($color-accent, 0.05);
+    
+    span {
+      font-weight: $font-weight-medium;
+    }
+    
+    svg {
+      font-size: 1rem;
+    }
+    
+    &:hover:not(:disabled) {
+      background-color: rgba($color-accent, 0.1);
+    }
+  }
 }
