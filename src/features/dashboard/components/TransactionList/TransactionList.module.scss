@@ -148,3 +148,79 @@
     }
   }
 }
+
+.mobileCards {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  width: 100%;
+}
+
+.card {
+  background-color: $color-bg;
+  border-radius: $radius-lg;
+  border: 1px solid $color-border;
+  box-shadow: $shadow-sm;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-md;
+  }
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $spacing-md;
+  background-color: rgba($color-accent, 0.03);
+  border-bottom: 1px solid $color-border;
+}
+
+.reference {
+  font-weight: $font-weight-semibold;
+  font-size: 0.9375rem;
+  color: $color-text-primary;
+}
+
+.cardBody {
+  padding: $spacing-md;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.cardRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  .label {
+    font-size: 0.8125rem;
+    color: $color-text-secondary;
+    font-weight: $font-weight-medium;
+  }
+}
+
+// Media query for pagination on mobile
+@media (max-width: 768px) {
+  .pagination {
+    .navButton {
+      min-width: 60px;
+      
+      span {
+        font-size: 0.75rem;
+      }
+    }
+    
+    button:not(.navButton) {
+      display: none;
+      
+      &.active {
+        display: inline-flex;
+      }
+    }
+  }
+}
