@@ -1,0 +1,78 @@
+@import "../../../../styles/design-system.scss";
+@import "../../../../styles/mixins.scss";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  margin-bottom: $spacing-xl;
+}
+
+.title {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin: 0;
+  font-family: $font-family;
+}
+
+.starButton {
+  background: none;
+  border: none;
+  color: $color-text-tertiary;
+  cursor: pointer;
+  padding: $spacing-sm;
+  border-radius: 50%;
+  transition: $transition-fast;
+  font-size: $font-size-lg;
+  
+  &:hover {
+    color: #FFD700;
+    background-color: rgba(255, 215, 0, 0.1);
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  text-align: center;
+  height: calc(100% - 60px);
+}
+
+.valueContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: $spacing-md;
+  width: 100%;
+}
+
+.value {
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-bold;
+  color: $color-success;
+  line-height: $line-height-tight;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $font-family;
+  
+  .arrow {
+    font-size: $font-size-2xl;
+    margin-right: $spacing-sm;
+  }
+}
+
+.label {
+  font-size: $font-size-base;
+  color: $color-text-secondary;
+  max-width: 220px;
+  line-height: $line-height-normal;
+  font-weight: $font-weight-regular;
+  margin-top: $spacing-sm;
+  font-family: $font-family;
+} 

@@ -22,4 +22,9 @@ export interface Transaction {
   reference: string;
 }
 
+export interface FunnelStep {
+  stage: string;
+  value: number;
+}
+
 export type TransactionStatus = "completed" | "pending" | "failed";

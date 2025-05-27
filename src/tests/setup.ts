@@ -1,5 +1,14 @@
-import '@testing-library/jest-dom';
-import { vi, beforeEach, afterEach } from 'vitest';
+import "@testing-library/jest-dom";
+import { vi, beforeEach, afterEach } from "vitest";
+
+// Mock ResizeObserver for Recharts components
+class ResizeObserverMock {
+  observe = vi.fn();
+  unobserve = vi.fn();
+  disconnect = vi.fn();
+}
+
+global.ResizeObserver = ResizeObserverMock;
 
 // Mock global fetch if needed
 // global.fetch = vi.fn();
@@ -12,4 +21,4 @@ beforeEach(() => {
 // Clean up after each test
 afterEach(() => {
   vi.restoreAllMocks();
-}); 
+});

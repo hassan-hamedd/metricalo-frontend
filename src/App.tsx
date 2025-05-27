@@ -61,6 +61,14 @@ function App() {
                 path="profile"
                 element={<div className="container">Profile Page</div>}
               />
+              <Route
+                path="payment-methods"
+                element={<div className="container">Payment Method Page</div>}
+              />
+              <Route
+                path="notifications"
+                element={<div className="container">Notifications Page</div>}
+              />
             </Route>
           </Route>
 

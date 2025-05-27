@@ -2,7 +2,83 @@
 @import "../../../../styles/mixins.scss";
 
 .dashboardPage {
-  padding: $spacing-xl 0 $spacing-2xl;
+  padding: $spacing-xl;
+  background-color: $color-muted-bg;
+  min-height: 100vh;
+  font-family: $font-family;
+  width: 100%;
+}
+
+.dashboardGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-xl;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+
+  @include breakpoint-up(lg) {
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto auto;
+    gap: $spacing-xl;
+  }
+}
+
+// Card styling
+:global {
+  .card {
+    border-radius: $radius-lg;
+    box-shadow: $shadow-sm;
+    background-color: $color-bg;
+    overflow: hidden;
+    border: none;
+    height: 100%;
+    padding: $spacing-xl;
+  }
+  
+  // Retention & Profit card - takes left side of first row
+  .retention-profit-card {
+    grid-column: span 1;
+    grid-row: 1;
+    
+    @include breakpoint-up(lg) {
+      grid-column: 1;
+      grid-row: 1;
+    }
+  }
+  
+  // Goal Achievement card - takes right side of first row
+  .goal-achievement-card {
+    grid-column: span 1;
+    grid-row: 2;
+    
+    @include breakpoint-up(lg) {
+      grid-column: 2;
+      grid-row: 1;
+    }
+  }
+  
+  // Funnel Overview card - takes left side of second row
+  .funnel-overview-card {
+    grid-column: span 1;
+    grid-row: 3;
+    
+    @include breakpoint-up(lg) {
+      grid-column: 1;
+      grid-row: 2;
+    }
+  }
+  
+  // Customer Satisfaction card - takes right side of second row
+  .customer-satisfaction-card {
+    grid-column: span 1;
+    grid-row: 4;
+    
+    @include breakpoint-up(lg) {
+      grid-column: 2;
+      grid-row: 2;
+    }
+  }
 }
 
 .header {

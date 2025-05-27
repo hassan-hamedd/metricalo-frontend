@@ -63,21 +63,19 @@ export const getCurrentUser = async (): Promise<User | null> => {
 
   // For now, we'll get from localStorage
   return new Promise((resolve) => {
-    setTimeout(() => {
-      const userJson = localStorage.getItem("user");
+    const userJson = localStorage.getItem("user");
 
-      if (userJson) {
-        try {
-          const user = JSON.parse(userJson) as User;
-          resolve(user);
-        } catch {
-          clearAuthData();
-          resolve(null);
-        }
-      } else {
+    if (userJson) {
+      try {
+        const user = JSON.parse(userJson) as User;
+        resolve(user);
+      } catch {
+        clearAuthData();
         resolve(null);
       }
-    }, 300);
+    } else {
+      resolve(null);
+    }
   });
 };
 

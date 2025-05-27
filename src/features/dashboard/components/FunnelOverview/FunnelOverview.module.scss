@@ -1,0 +1,67 @@
+@import "../../../../styles/design-system.scss";
+@import "../../../../styles/mixins.scss";
+
+/* colour tokens */
+$card-bg: #f0f1ed;
+
+/* -------------------------------------------------- */
+
+.card {
+  background: $card-bg;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.header {
+  margin-bottom: $spacing-xl;
+
+  h2 {
+    font-size: $font-size-md;
+    font-weight: $font-weight-semibold;
+    color: $color-text-primary;
+    margin: 0;
+    font-family: $font-family;
+  }
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: $spacing-lg;
+  list-style: none;
+  margin: 0 0 $spacing-2xl;
+  padding: 0;
+
+  li {
+    text-align: center;
+  }
+}
+
+.metricLabel {
+  display: block;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  color: $color-text-tertiary;
+  text-transform: uppercase;
+  letter-spacing: $letter-spacing-wide;
+  margin-bottom: $spacing-sm;
+  font-family: $font-family;
+  line-height: $line-height-tight;
+}
+
+.metricValue {
+  font-size: $font-size-md;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  font-family: $font-family;
+}
+
+.chartWrapper {
+  height: 200px;
+  border-radius: $radius-md;
+  overflow: hidden;
+  background: transparent;
+}

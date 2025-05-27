@@ -28,6 +28,7 @@ const Logo: React.FC<LogoProps> = ({
           width={24}
           height={24}
           className={styles.logo}
+          data-testid="logo-svg"
         >
           <path
             d="M51.5209 0.449219L45.6236 39.3827C44.7858 44.9064 40.1218 48.9807 34.6367 48.9807L40.534 10.0471C41.3684 4.52342 46.0358 0.449219 51.5209 0.449219Z"
@@ -59,6 +60,7 @@ const Logo: React.FC<LogoProps> = ({
       width={width}
       height={height}
       className={`${styles.logo} ${className}`}
+      data-testid="logo-svg"
     >
       <path
         d="M325.799 2.14465H322.734V0.464844H330.763V2.14465H327.711V10.7807H325.803V2.14465H325.799Z"

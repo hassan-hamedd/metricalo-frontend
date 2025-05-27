@@ -1,0 +1,82 @@
+@import "../../../../styles/design-system.scss";
+@import "../../../../styles/mixins.scss";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  margin-bottom: $spacing-xl;
+}
+
+.title {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin: 0;
+  font-family: $font-family;
+}
+
+.content {
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pieChartContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+.pieChart {
+  margin-bottom: $spacing-xl;
+  filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.04));
+}
+
+.pieSegment {
+  transition: transform $transition-fast;
+  
+  &:hover {
+    transform: translateX(2px) translateY(2px);
+  }
+}
+
+.pieLabel {
+  pointer-events: none;
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.15);
+  font-family: $font-family;
+}
+
+.legend {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  width: 100%;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  font-size: $font-size-base;
+}
+
+.legendColor {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  box-shadow: $shadow-sm;
+}
+
+.legendCountry {
+  color: $color-text-secondary;
+  font-weight: $font-weight-regular;
+  font-family: $font-family;
+} 

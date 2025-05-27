@@ -5,10 +5,32 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import styles from "./AppLayout.module.scss";
 import Logo from "../../ui/Logo";
-import { 
-  FiMenu, FiX, FiGrid, FiDollarSign, FiUsers, 
-  FiBarChart2, FiSettings, FiUser, FiLogOut 
+import {
+  FiMenu,
+  FiX,
+  FiGrid,
+  FiDollarSign,
+  FiUsers,
+  FiBarChart2,
+  FiSettings,
+  FiUser,
+  FiLogOut,
+  FiCreditCard,
+  FiBell,
+  FiSliders,
 } from "react-icons/fi";
+
+interface NavGroupProps {
+  title: string;
+  children: ReactNode;
+}
+
+const NavGroup = ({ title, children }: NavGroupProps) => (
+  <div className={styles.navGroup}>
+    <div className={styles.navGroupTitle}>{title}</div>
+    {children}
+  </div>
+);
 
 interface AppLayoutProps {
   children: ReactNode;
@@ -39,8 +61,12 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
   };
 
   const handleLogout = async () => {
-    await logout();
-    navigate("/login");
+    try {
+      await logout();
+      navigate("/login");
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
   };
 
   const toggleMobileMenu = () => {
@@ -113,63 +139,92 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
         {/* Desktop Sidebar */}
         <aside className={styles.sidebar}>
           <nav>
-            <ul className={styles.nav}>
-              <li className={styles.navItem}>
-                <NavLink
-                  to="/dashboard"
-                  className={({ isActive }) =>
-                    `${styles.navLink} ${isActive ? styles.active : ""}`
-                  }
-                >
-                  <FiGrid />
-                  Dashboard
-                </NavLink>
-              </li>
-              <li className={styles.navItem}>
-                <NavLink
-                  to="/transactions"
-                  className={({ isActive }) =>
-                    `${styles.navLink} ${isActive ? styles.active : ""}`
-                  }
-                >
-                  <FiDollarSign />
-                  Transactions
-                </NavLink>
-              </li>
-              <li className={styles.navItem}>
-                <NavLink
-                  to="/customers"
-                  className={({ isActive }) =>
-                    `${styles.navLink} ${isActive ? styles.active : ""}`
-                  }
-                >
-                  <FiUsers />
-                  Customers
-                </NavLink>
-              </li>
-              <li className={styles.navItem}>
-                <NavLink
-                  to="/reports"
-                  className={({ isActive }) =>
-                    `${styles.navLink} ${isActive ? styles.active : ""}`
-                  }
-                >
-                  <FiBarChart2 />
-                  Reports
-                </NavLink>
-              </li>
-              <li className={styles.navItem}>
-                <NavLink
-                  to="/settings"
-                  className={({ isActive }) =>
-                    `${styles.navLink} ${isActive ? styles.active : ""}`
-                  }
-                >
-                  <FiSettings />
-                  Settings
-                </NavLink>
-              </li>
-            </ul>
+            <NavGroup title="General">
+              <ul className={styles.nav}>
+                <li className={styles.navItem}>
+                  <NavLink
+                    to="/dashboard"
+                    className={({ isActive }) =>
+                      `${styles.navLink} ${isActive ? styles.active : ""}`
+                    }
+                  >
+                    <FiGrid />
+                    Dashboard
+                  </NavLink>
+                </li>
+                <li className={styles.navItem}>
+                  <NavLink
+                    to="/transactions"
+                    className={({ isActive }) =>
+                      `${styles.navLink} ${isActive ? styles.active : ""}`
+                    }
+                  >
+                    <FiDollarSign />
+                    Transactions
+                  </NavLink>
+                </li>
+                <li className={styles.navItem}>
+                  <NavLink
+                    to="/customers"
+                    className={({ isActive }) =>
+                      `${styles.navLink} ${isActive ? styles.active : ""}`
+                    }
+                  >
+                    <FiUsers />
+                    Customers
+                  </NavLink>
+                </li>
+                <li className={styles.navItem}>
+                  <NavLink
+                    to="/reports"
+                    className={({ isActive }) =>
+                      `${styles.navLink} ${isActive ? styles.active : ""}`
+                    }
+                  >
+                    <FiBarChart2 />
+                    Reports
+                  </NavLink>
+                </li>
+              </ul>
+            </NavGroup>
+
+            <NavGroup title="Payment Processing">
+              <ul className={styles.nav}>
+                <li className={styles.navItem}>
+                  <NavLink
+                    to="/payment-methods"
+                    className={({ isActive }) =>
+                      `${styles.navLink} ${isActive ? styles.active : ""}`
+                    }
+                  >
+                    <FiCreditCard />
+                    Payment Methods
+                  </NavLink>
+                </li>
+                <li className={styles.navItem}>
+                  <NavLink
+                    to="/notifications"
+                    className={({ isActive }) =>
+                      `${styles.navLink} ${isActive ? styles.active : ""}`
+                    }
+                  >
+                    <FiBell />
+                    Notifications
+                  </NavLink>
+                </li>
+                <li className={styles.navItem}>
+                  <NavLink
+                    to="/settings"
+                    className={({ isActive }) =>
+                      `${styles.navLink} ${isActive ? styles.active : ""}`
+                    }
+                  >
+                    <FiSliders />
+                    Settings
+                  </NavLink>
+                </li>
+              </ul>
+            </NavGroup>
           </nav>
         </aside>
 
@@ -191,68 +246,99 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
             <FiX />
           </button>
           <nav>
-            <ul className={styles.nav}>
-              <li className={styles.navItem}>
-                <NavLink
-                  to="/dashboard"
-                  className={({ isActive }) =>
-                    `${styles.navLink} ${isActive ? styles.active : ""}`
-                  }
-                  onClick={toggleMobileMenu}
-                >
-                  <FiGrid />
-                  Dashboard
-                </NavLink>
-              </li>
-              <li className={styles.navItem}>
-                <NavLink
-                  to="/transactions"
-                  className={({ isActive }) =>
-                    `${styles.navLink} ${isActive ? styles.active : ""}`
-                  }
-                  onClick={toggleMobileMenu}
-                >
-                  <FiDollarSign />
-                  Transactions
-                </NavLink>
-              </li>
-              <li className={styles.navItem}>
-                <NavLink
-                  to="/customers"
-                  className={({ isActive }) =>
-                    `${styles.navLink} ${isActive ? styles.active : ""}`
-                  }
-                  onClick={toggleMobileMenu}
-                >
-                  <FiUsers />
-                  Customers
-                </NavLink>
-              </li>
-              <li className={styles.navItem}>
-                <NavLink
-                  to="/reports"
-                  className={({ isActive }) =>
-                    `${styles.navLink} ${isActive ? styles.active : ""}`
-                  }
-                  onClick={toggleMobileMenu}
-                >
-                  <FiBarChart2 />
-                  Reports
-                </NavLink>
-              </li>
-              <li className={styles.navItem}>
-                <NavLink
-                  to="/settings"
-                  className={({ isActive }) =>
-                    `${styles.navLink} ${isActive ? styles.active : ""}`
-                  }
-                  onClick={toggleMobileMenu}
-                >
-                  <FiSettings />
-                  Settings
-                </NavLink>
-              </li>
-            </ul>
+            <NavGroup title="General">
+              <ul className={styles.nav}>
+                <li className={styles.navItem}>
+                  <NavLink
+                    to="/dashboard"
+                    className={({ isActive }) =>
+                      `${styles.navLink} ${isActive ? styles.active : ""}`
+                    }
+                    onClick={toggleMobileMenu}
+                  >
+                    <FiGrid />
+                    Dashboard
+                  </NavLink>
+                </li>
+                <li className={styles.navItem}>
+                  <NavLink
+                    to="/transactions"
+                    className={({ isActive }) =>
+                      `${styles.navLink} ${isActive ? styles.active : ""}`
+                    }
+                    onClick={toggleMobileMenu}
+                  >
+                    <FiDollarSign />
+                    Transactions
+                  </NavLink>
+                </li>
+                <li className={styles.navItem}>
+                  <NavLink
+                    to="/customers"
+                    className={({ isActive }) =>
+                      `${styles.navLink} ${isActive ? styles.active : ""}`
+                    }
+                    onClick={toggleMobileMenu}
+                  >
+                    <FiUsers />
+                    Customers
+                  </NavLink>
+                </li>
+                <li className={styles.navItem}>
+                  <NavLink
+                    to="/reports"
+                    className={({ isActive }) =>
+                      `${styles.navLink} ${isActive ? styles.active : ""}`
+                    }
+                    onClick={toggleMobileMenu}
+                  >
+                    <FiBarChart2 />
+                    Reports
+                  </NavLink>
+                </li>
+              </ul>
+            </NavGroup>
+
+            <NavGroup title="Payment Processing">
+              <ul className={styles.nav}>
+                <li className={styles.navItem}>
+                  <NavLink
+                    to="/payment-methods"
+                    className={({ isActive }) =>
+                      `${styles.navLink} ${isActive ? styles.active : ""}`
+                    }
+                    onClick={toggleMobileMenu}
+                  >
+                    <FiCreditCard />
+                    Payment Methods
+                  </NavLink>
+                </li>
+                <li className={styles.navItem}>
+                  <NavLink
+                    to="/notifications"
+                    className={({ isActive }) =>
+                      `${styles.navLink} ${isActive ? styles.active : ""}`
+                    }
+                    onClick={toggleMobileMenu}
+                  >
+                    <FiBell />
+                    Notifications
+                  </NavLink>
+                </li>
+                <li className={styles.navItem}>
+                  <NavLink
+                    to="/settings"
+                    className={({ isActive }) =>
+                      `${styles.navLink} ${isActive ? styles.active : ""}`
+                    }
+                    onClick={toggleMobileMenu}
+                  >
+                    <FiSliders />
+                    Settings
+                  </NavLink>
+                </li>
+              </ul>
+            </NavGroup>
           </nav>
         </aside>
 

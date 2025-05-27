@@ -1,0 +1,148 @@
+@import "../../../../styles/design-system.scss";
+@import "../../../../styles/mixins.scss";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $spacing-xl;
+  padding: 0;
+}
+
+.title {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin: 0;
+  font-family: $font-family;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: $spacing-lg;
+}
+
+.monthSelector {
+  position: relative;
+}
+
+.monthButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-sm;
+  background-color: transparent;
+  padding: $spacing-sm $spacing-md;
+  border-radius: $radius-full;
+  font-size: $font-size-base;
+  color: $color-text-secondary;
+  font-family: $font-family;
+  border: 1px solid $color-border;
+
+  svg {
+    margin-left: $spacing-sm;
+    color: $color-text-tertiary;
+  }
+
+  &:hover {
+    background-color: rgba($color-text-tertiary, 0.05);
+  }
+}
+
+.circle {
+  border: none;
+  outline: none;
+  fill: $color-bg;
+  background-color: $color-accent;
+  border-radius: $radius-full;
+}
+
+.downloadButton {
+  background-color: $color-text-tertiary;
+  color: $color-text-inverse;
+  border: none;
+  border-radius: $radius-full;
+  padding: $spacing-sm $spacing-lg;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  font-family: $font-family;
+  transition: $transition-fast;
+  cursor: pointer;
+
+  &:hover {
+    background-color: darken($color-text-tertiary, 8%);
+  }
+}
+
+.statsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0;
+  gap: $spacing-lg;
+
+  @include breakpoint-up(md) {
+    flex-wrap: nowrap;
+  }
+}
+
+.statItem {
+  flex: 1;
+  min-width: 110px;
+
+  @include breakpoint-up(md) {
+    min-width: 0;
+  }
+}
+
+.statInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-lg $spacing-md;
+  text-align: center;
+  background-color: $color-bg;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-sm;
+  height: 100%;
+  border: $border-width $border-style $color-border;
+}
+
+.statLabel {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  color: $color-text-tertiary;
+  margin-bottom: $spacing-sm;
+  letter-spacing: $letter-spacing-wide;
+  text-transform: uppercase;
+  font-family: $font-family;
+}
+
+.statValue {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  margin-bottom: $spacing-sm;
+  font-family: $font-family;
+}
+
+.statTrend {
+  font-size: $font-size-sm;
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $radius-md;
+  font-weight: $font-weight-medium;
+  display: inline-block;
+  font-family: $font-family;
+
+  &.positive {
+    color: $color-success;
+    background-color: $color-success-bg;
+  }
+
+  &.negative {
+    color: $color-error;
+    background-color: $color-error-bg;
+  }
+}

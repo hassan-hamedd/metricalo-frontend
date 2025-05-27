@@ -1,99 +1,75 @@
 import { useState } from "react";
-import Card from "../../../../components/ui/Card/Card";
-import StatCard from "../../components/StatCard/StatCard";
-import TransactionList from "../../components/TransactionList/TransactionList";
-import TrendChart from "../../components/TrendChart/TrendChart";
+import RetentionProfitCard from "../../components/RetentionProfitCard/RetentionProfitCard";
+import FunnelOverview from "../../components/FunnelOverview/FunnelOverview";
+import CustomerSatisfaction from "../../components/CustomerSatisfaction/CustomerSatisfaction";
+import GoalAchievement from "../../components/GoalAchievement/GoalAchievement";
 import useDashboardStats from "../../../../hooks/useDashboardStats";
-import useTransactions from "../../../../hooks/useTransactions";
-import useTrendCalculation from "../../../../hooks/useTrendCalculation";
-import { formatCurrency } from "../../../../utils/formatters";
 import styles from "./DashboardPage.module.scss";
-import { FiDollarSign, FiCheckCircle, FiAlertCircle, FiXCircle } from "react-icons/fi";
+import type { FunnelStep } from "../../components/FunnelOverview/FunnelChart/FunnelChart";
 
 export const DashboardPage = () => {
-  const {
-    totalPaymentVolume,
-    weeklyTrend,
-    successRate,
-    pendingTransactions,
-    failedTransactions,
-    isLoading: isStatsLoading,
-  } = useDashboardStats();
+  const [selectedMonth, setSelectedMonth] = useState("January / 2023");
+  const { isLoading: isStatsLoading } = useDashboardStats();
 
-  const { trendPercentage } = useTrendCalculation(weeklyTrend);
+  const monthlyStats = {
+    newCustomers: {
+      value: "11,950",
+      trend: 24.57,
+      isPositive: true,
+    },
+    retention: {
+      value: "48%",
+      trend: 8.57,
+      isPositive: true,
+    },
+    profit: {
+      value: "$37,457",
+      trend: 6.44,
+      isPositive: true,
+    },
+    costs: {
+      value: "$16,886",
+      trend: 6.27,
+      isPositive: false,
+    },
+    roi: {
+      value: "48%",
+      trend: 2.77,
+      isPositive: true,
+    },
+  };
 
-  const [page, setPage] = useState(1);
-  const {
-    transactions,
-    pagination,
-    isLoading: isTransactionsLoading,
-    changePage,
-  } = useTransactions({ page, limit: 5 });
+  const satisfactionData = {
+    countries: [
+      { name: "France", percentage: 48 },
+      { name: "Italy", percentage: 28 },
+      { name: "Canada", percentage: 24 },
+    ],
+  };
+
+  const funnelData: FunnelStep[] = [
+    { stage: "Open Page", value: 4535 },
+    { stage: "Checkout", value: 3472 },
+    { stage: "Checkout Submit", value: 2839 },
+    { stage: "Success Payment", value: 1035 },
+    { stage: "Rebilling", value: 674 },
+  ];
 
   return (
     <div className={styles.dashboardPage}>
-      <div className="container">
-        <div className={styles.header}>
-          <h1>Billing Dashboard</h1>
-          <p>Overview of your payment activity</p>
-        </div>
+      <div className={styles.dashboardGrid}>
+        <RetentionProfitCard
+          stats={monthlyStats}
+          selectedMonth={selectedMonth}
+          onMonthChange={setSelectedMonth}
+          isLoading={isStatsLoading}
+        />
 
-        <div className={styles.statsGrid}>
-          <StatCard
-            label="Total Payment Volume"
-            value={formatCurrency(totalPaymentVolume)}
-            iconVariant="primary"
-            icon={<FiDollarSign />}
-            trend={trendPercentage}
-          />
+        <GoalAchievement value="48.6%" label="customer retention" />
 
-          <StatCard
-            label="Success Rate"
-            value={`${successRate}%`}
-            iconVariant="success"
-            icon={<FiCheckCircle />}
-          />
+        <FunnelOverview data={funnelData} />
 
-          <StatCard
-            label="Pending Transactions"
-            value={pendingTransactions}
-            iconVariant="warning"
-            icon={<FiAlertCircle />}
-          />
-
-          <StatCard
-            label="Failed Transactions"
-            value={failedTransactions}
-            iconVariant="danger"
-            icon={<FiXCircle />}
-          />
-        </div>
-
-        <div className={styles.chartSection}>
-          <h2 className={styles.sectionTitle}>Weekly Payment Trend</h2>
-          <Card>
-            <Card.Body>
-              <TrendChart data={weeklyTrend} isLoading={isStatsLoading} />
-            </Card.Body>
-          </Card>
-        </div>
-
-        <div className={styles.transactionsSection}>
-          <h2 className={styles.sectionTitle}>Recent Transactions</h2>
-          <Card>
-            <Card.Body>
-              <TransactionList
-                transactions={transactions}
-                isLoading={isTransactionsLoading}
-                pagination={pagination}
-                onPageChange={(newPage) => {
-                  setPage(newPage);
-                  changePage(newPage);
-                }}
-              />
-            </Card.Body>
-          </Card>
-        </div>
+        <CustomerSatisfaction data={satisfactionData} />
       </div>
     </div>
   );
