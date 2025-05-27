@@ -7,6 +7,18 @@
   align-items: center;
   margin-bottom: $spacing-xl;
   padding: 0;
+  flex-wrap: wrap;
+  gap: $spacing-md;
+
+  @include breakpoint-down(sm) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $spacing-lg;
+  }
+
+  @include breakpoint-down(md) {
+    margin-bottom: $spacing-lg;
+  }
 }
 
 .title {
@@ -15,16 +27,27 @@
   color: $color-text-primary;
   margin: 0;
   font-family: $font-family;
+
+  @include breakpoint-down(sm) {
+    font-size: $font-size-lg;
+  }
 }
 
 .actions {
   display: flex;
   align-items: center;
   gap: $spacing-lg;
+
+  @include breakpoint-down(sm) {
+    gap: $spacing-md;
+    width: 100%;
+    justify-content: space-between;
+  }
 }
 
 .monthSelector {
   position: relative;
+  width: 45%;
 }
 
 .monthButton {
@@ -39,10 +62,24 @@
   color: $color-text-secondary;
   font-family: $font-family;
   border: 1px solid $color-border;
+  min-height: 44px;
+  white-space: nowrap;
+
+  @include breakpoint-down(sm) {
+    width: 100%;
+    padding: $spacing-sm;
+    justify-content: center;
+    gap: 0;
+  }
 
   svg {
     margin-left: $spacing-sm;
     color: $color-text-tertiary;
+    flex-shrink: 0;
+
+    @include breakpoint-down(sm) {
+      display: none;
+    }
   }
 
   &:hover {
@@ -69,6 +106,18 @@
   font-family: $font-family;
   transition: $transition-fast;
   cursor: pointer;
+  min-height: 44px;
+  white-space: nowrap;
+
+  @include breakpoint-down(sm) {
+    padding: $spacing-md $spacing-lg;
+    font-size: $font-size-sm;
+    width: 45%;
+    padding: $spacing-sm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
   &:hover {
     background-color: darken($color-text-tertiary, 8%);
