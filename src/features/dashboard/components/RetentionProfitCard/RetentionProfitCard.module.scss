@@ -47,7 +47,10 @@
 
 .monthSelector {
   position: relative;
-  width: 45%;
+
+  @include breakpoint-down(sm) {
+    width: 45%;
+  }
 }
 
 .monthButton {
