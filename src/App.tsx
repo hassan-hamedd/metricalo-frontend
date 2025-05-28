@@ -7,7 +7,8 @@ import {
   Outlet,
 } from "react-router-dom";
 import AppLayout from "./components/layout/AppLayout/AppLayout";
-import PrivateRoute from "./components/layout/PrivateRoute";
+import PrivateRoute from "./components/layout/PrivateRoute/PrivateRoute";
+import ScrollToTop from "./components/layout/ScrollToTop/ScrollToTop";
 import DashboardPage from "./features/dashboard/pages/DashboardPage/DashboardPage";
 import LoginPage from "./features/auth/pages/LoginPage/LoginPage";
 import "./styles/global.scss";
@@ -25,6 +26,7 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           {/* Public routes */}
           <Route path="/login" element={<LoginPage />} />

@@ -5,7 +5,7 @@ import { PrivateRoute } from "./PrivateRoute";
 
 // Mock the useAuth hook
 const mockUseAuth = vi.fn();
-vi.mock("../../hooks/useAuth", () => ({
+vi.mock("../../../hooks/useAuth", () => ({
   default: () => mockUseAuth(),
 }));
 
