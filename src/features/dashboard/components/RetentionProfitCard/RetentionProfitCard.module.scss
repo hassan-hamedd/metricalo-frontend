@@ -1,6 +1,7 @@
 @import "../../../../styles/design-system.scss";
 @import "../../../../styles/mixins.scss";
 
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -133,18 +134,117 @@
   justify-content: space-between;
   padding: 0;
   gap: $spacing-lg;
+  align-items: stretch;
+  min-height: fit-content;
 
-  @include breakpoint-up(md) {
+  // Large screens: all 5 items in one row
+  @include breakpoint-up(lg) {
     flex-wrap: nowrap;
+    gap: $spacing-lg;
+  }
+
+  // Medium screens: max 2 items per row
+  @include breakpoint-between(md, lg) {
+    gap: $spacing-md;
+    justify-content: flex-start;
+    align-content: flex-start;
+  }
+
+  // Small screens: max 2 items per row (above sm breakpoint)
+  @include breakpoint-between(sm, md) {
+    gap: $spacing-md;
+    justify-content: flex-start;
+    align-content: flex-start;
+  }
+
+  // Very small screens: stack vertically
+  @include breakpoint-down(sm) {
+    gap: $spacing-sm;
+    flex-direction: column;
   }
 }
 
 .statItem {
   flex: 1;
-  min-width: 110px;
+  min-width: 140px; // Increased from 110px to accommodate larger numbers
 
-  @include breakpoint-up(md) {
+  // Large screens: equal width items
+  @include breakpoint-up(lg) {
     min-width: 0;
+    flex: 1 1 auto; // All items equal width, including last item
+  }
+
+  // Medium screens: 2 items per row, 5th item gets full width on its own row
+  @include breakpoint-between(md, lg) {
+    flex: 1 1 calc(50% - #{$spacing-md / 2});
+    max-width: calc(50% - #{$spacing-md / 2});
+    min-width: 120px;
+
+    // Last item gets special treatment - full width and larger styling
+    &:last-child {
+      flex: 1 1 100%;
+      max-width: 100%;
+
+      .statInner {
+        padding: $spacing-lg $spacing-xl; // More padding for emphasis
+        min-height: 140px; // Slightly taller
+      }
+
+      .statValue {
+        font-size: $font-size-2xl; // Larger value text
+      }
+
+      .statLabel {
+        font-size: $font-size-sm; // Slightly larger label
+      }
+    }
+  }
+
+  // Small to medium screens: 2 items per row, 5th item gets full width
+  @include breakpoint-between(sm, md) {
+    flex: 1 1 calc(50% - #{$spacing-md / 2});
+    max-width: calc(50% - #{$spacing-md / 2});
+    min-width: 120px;
+
+    // Last item gets special treatment - full width and larger styling
+    &:last-child {
+      flex: 1 1 100%;
+      max-width: 100%;
+
+      .statInner {
+        padding: $spacing-lg $spacing-xl; // More padding for emphasis
+        min-height: 140px; // Slightly taller
+      }
+
+      .statValue {
+        font-size: $font-size-2xl; // Larger value text
+      }
+
+      .statLabel {
+        font-size: $font-size-sm; // Slightly larger label
+      }
+    }
+  }
+
+  // Very small screens: all items stacked vertically on separate rows
+  @include breakpoint-down(sm) {
+    flex: 1 1 100%;
+    max-width: 100%;
+    min-width: 100%;
+
+    // Last item gets subtle emphasis even on small screens
+    &:last-child {
+      flex: 1 1 100%;
+      max-width: 100%;
+      .statInner {
+        padding: $spacing-xl $spacing-lg; // More padding
+        min-height: 110px; // Slightly taller
+      }
+
+      .statValue {
+        font-size: $font-size-2xl; // Larger value text
+      }
+    }
   }
 }
 
@@ -160,6 +260,23 @@
   box-shadow: $shadow-sm;
   height: 100%;
   border: $border-width $border-style $color-border;
+  min-height: 120px; // Ensure consistent height
+  box-sizing: border-box; // Include padding and border in height calculation
+
+  @include breakpoint-between(md, lg) {
+    padding: $spacing-md $spacing-sm;
+    min-height: 130px; // Slightly taller for medium screens to accommodate content
+  }
+
+  @include breakpoint-down(md) {
+    padding: $spacing-md $spacing-sm;
+    min-height: 130px; // Slightly taller for small screens to accommodate content
+  }
+
+  @include breakpoint-down(sm) {
+    padding: $spacing-lg $spacing-md;
+    min-height: 100px;
+  }
 }
 
 .statLabel {
@@ -170,6 +287,12 @@
   letter-spacing: $letter-spacing-wide;
   text-transform: uppercase;
   font-family: $font-family;
+  line-height: 1.2;
+
+  @include breakpoint-down(md) {
+    font-size: 10px;
+    margin-bottom: $spacing-xs;
+  }
 }
 
 .statValue {
@@ -178,6 +301,17 @@
   color: $color-text-primary;
   margin-bottom: $spacing-sm;
   font-family: $font-family;
+  line-height: 1.1;
+  word-break: break-word; // Prevent overflow of long numbers
+
+  @include breakpoint-down(md) {
+    font-size: $font-size-lg;
+    margin-bottom: $spacing-xs;
+  }
+
+  @include breakpoint-down(sm) {
+    font-size: $font-size-xl;
+  }
 }
 
 .statTrend {

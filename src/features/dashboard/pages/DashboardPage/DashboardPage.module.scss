@@ -17,7 +17,8 @@
   max-width: 1400px;
   margin: 0 auto;
 
-  @include breakpoint-up(lg) {
+  // Only use 2-column layout on extra large screens
+  @include breakpoint-up(xl) {
     grid-template-columns: 2fr 1fr;
     grid-template-rows: auto auto;
     gap: $spacing-xl;
@@ -36,45 +37,49 @@
     padding: $spacing-xl;
   }
   
-  // Retention & Profit card - takes left side of first row
+  // Retention & Profit card
   .retention-profit-card {
     grid-column: span 1;
     grid-row: 1;
     
-    @include breakpoint-up(lg) {
+    // Only use grid positioning on xl screens
+    @include breakpoint-up(xl) {
       grid-column: 1;
       grid-row: 1;
     }
   }
   
-  // Goal Achievement card - takes right side of first row
+  // Goal Achievement card
   .goal-achievement-card {
     grid-column: span 1;
     grid-row: 2;
     
-    @include breakpoint-up(lg) {
+    // Only use grid positioning on xl screens
+    @include breakpoint-up(xl) {
       grid-column: 2;
       grid-row: 1;
     }
   }
   
-  // Funnel Overview card - takes left side of second row
+  // Funnel Overview card
   .funnel-overview-card {
     grid-column: span 1;
     grid-row: 3;
     
-    @include breakpoint-up(lg) {
+    // Only use grid positioning on xl screens
+    @include breakpoint-up(xl) {
       grid-column: 1;
       grid-row: 2;
     }
   }
   
-  // Customer Satisfaction card - takes right side of second row
+  // Customer Satisfaction card
   .customer-satisfaction-card {
     grid-column: span 1;
     grid-row: 4;
     
-    @include breakpoint-up(lg) {
+    // Only use grid positioning on xl screens
+    @include breakpoint-up(xl) {
       grid-column: 2;
       grid-row: 2;
     }
