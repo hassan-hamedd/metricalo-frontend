@@ -7,6 +7,10 @@
   min-height: 100vh;
   font-family: $font-family;
   width: 100%;
+
+  @include breakpoint-down(md) {
+    padding: $spacing-sm;
+  }
 }
 
 .dashboardGrid {

@@ -154,6 +154,10 @@
   @include breakpoint-up(md) {
     margin-left: 220px; /* Width of the sidebar */
   }
+
+  @include breakpoint-down(md) {
+    padding: $spacing-sm;
+  }
 }
 
 .navGroup {
