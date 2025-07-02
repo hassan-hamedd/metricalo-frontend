@@ -3,7 +3,8 @@ import {
   generateDashboardSummary,
   generateTransactions,
 } from "../../lib/mockData";
-import type { DashboardSummary, Transaction } from "../../types/dashboard";
+import type { DashboardSummary, Transaction } from "./domain/dashboard-schema";
+import { DashboardSummarySchema, TransactionSchema, FunnelStepSchema } from "./domain/dashboard-schema";
 
 /**
  * Fetch dashboard summary data

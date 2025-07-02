@@ -1,7 +1,8 @@
 // Keeping apiClient import for future reference when connecting to real API
 // import apiClient from "../../lib/apiClient";
 import { generateLoginResponse } from "../../lib/mockData";
-import type { LoginRequest, LoginResponse, User } from "../../types/auth";
+import type { LoginRequest, LoginResponse, User } from "./domain/auth-schema";
+import { UserSchema, LoginRequestSchema, LoginResponseSchema, AuthStateSchema } from "./domain/auth-schema";
 
 /**
  * Authenticate a user with email and password
